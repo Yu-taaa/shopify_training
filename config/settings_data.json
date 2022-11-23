@@ -235,6 +235,12 @@
         "type": "footer-custom",
         "settings": {
         }
+      },
+      "section-product": {
+        "type": "section-product",
+        "settings": {
+          "toppage_product": "商品5"
+        }
       }
     },
     "content_for_index": [
