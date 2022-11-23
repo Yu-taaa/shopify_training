@@ -1,39 +1,55 @@
 <section class="2022_new_collection sec">
   <h2>2022 NEW COLLECTION "APPLAUSE"</h2>
   <div class="collection-wrap flex">
-    <a class="product_card" href="#">
-      <img alt="" src="img/new/product-2.webp">
-      <h3>商品3</h3>
-      <p class="price">¥2,592</p>
-      <p class="Btn bgleft">
-        <span>詳細を見る</span>
-      </p>
-    </a>
-    <a class="product_card" href="#">
-      <img alt="" src="img/new/product-2.webp">
-      <h3>商品3</h3>
-      <p class="price">¥2,592</p>
-      <p class="Btn bgleft">
-        <span>詳細を見る</span>
-      </p>
-    </a>
-    <a class="product_card" href="#">
-      <img alt="" src="img/new/product-2.webp">
-      <h3>商品3</h3>
-      <p class="price">¥2,592</p>
-      <p class="Btn bgleft">
-        <span>詳細を見る</span>
-      </p>
-    </a>
-    <a class="product_card" href="#">
-      <img alt="" src="img/new/product-2.webp">
-      <h3>商品3</h3>
-      <p class="price">¥2,592</p>
-      <p class="Btn bgleft">
-        <span>詳細を見る</span>
-      </p>
-    </a>
+    {% assign collection = collections[section.settings.toppage_collection] %}
+    {% for product in collection.products %}
+      <a class="product_card" href="{{product.url}}">
+        <img alt="" src="{{product.featured_image.src | img_url: '3000x'}}">
+        <h3>{{product.title}}</h3>
+        <p class="price">{{product.price | money}}</p>
+        <p class="Btn bgleft">
+          <span>詳細を見る</span>
+        </p>
+      </a>
+    
+      
+    {% endfor %}      
+    {% endfor %}
 
+
+    <!-- <a class="product_card" href="#">
+      <img alt="" src="img/new/product-2.webp">
+      <h3>商品3</h3>
+      <p class="price">¥2,592</p>
+      <p class="Btn bgleft">
+        <span>詳細を見る</span>
+      </p>
+    </a>
+    <a class="product_card" href="#">
+      <img alt="" src="img/new/product-2.webp">
+      <h3>商品3</h3>
+      <p class="price">¥2,592</p>
+      <p class="Btn bgleft">
+        <span>詳細を見る</span>
+      </p>
+    </a>
+    <a class="product_card" href="#">
+      <img alt="" src="img/new/product-2.webp">
+      <h3>商品3</h3>
+      <p class="price">¥2,592</p>
+      <p class="Btn bgleft">
+        <span>詳細を見る</span>
+      </p>
+    </a>
+    <a class="product_card" href="#">
+      <img alt="" src="img/new/product-2.webp">
+      <h3>商品3</h3>
+      <p class="price">¥2,592</p>
+      <p class="Btn bgleft">
+        <span>詳細を見る</span>
+      </p>
+    </a>
+ -->
 
     <!-- <a href="#" class="product_card">
       <img src="img/new/product-2.webp" alt="">
