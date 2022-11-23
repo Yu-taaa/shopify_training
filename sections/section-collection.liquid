@@ -1,7 +1,9 @@
 <section class="2022_new_collection sec">
   <h2>2022 NEW COLLECTION "APPLAUSE"</h2>
   <div class="collection-wrap flex">
+    
     {% assign collection = collections[section.settings.toppage_collection] %}
+    {% paginate collection.products by 4 %}
     {% for product in collection.products %}
       <a class="product_card" href="{{product.url}}">
         <img alt="" src="{{product.featured_image.src | img_url: '3000x'}}">
@@ -9,7 +11,8 @@
         <p class="price">{{product.price | money}}</p>
         <p class="Btn bgleft"><span>詳細を見る</span></p>
       </a>    
-    {% endfor %}      
+    {% endfor %}
+    {% endpaginate %}  
 
 
     <!-- <a class="product_card" href="#">
