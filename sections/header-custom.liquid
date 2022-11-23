@@ -1,0 +1,104 @@
+<header class="header">
+  <div class="header_inner">
+    <nav class="nav">
+      <ul class="nav_list">
+        <!-- ↓ストア内の全てのメニューの中のメインメニューの中のリンクを取得し、1つ１つ変数linkに代入 -->
+        {% for link in linklists.main-menu.links %}
+
+        <!-- ↓linkのタイトルをハンドル整形し、変数child_list_handleに代入 -->
+        {% assign child_list_handle = link.title | handleize %}
+
+        <script>console.log({{ child_list_handle | json }} + "：child_list_handle")</script>
+
+        <!-- ホーム、カタログ、お問い合わせ（親要素）の中のリンク（子要素）が空でなければ -->
+        {% if linklists[child_list_handle].links != blank %}
+
+          <!-- 親要素にプルダウンを設定し、子要素を表示する -->
+          <li class="has-child"><a href="{{link.url}}">{{link.title}}</a>
+            <ul>
+
+              <!-- 親要素の中の子要素のリンクを取得して、childlinkに格納 -->
+              {% for childlink in linklists[child_list_handle].links %}
+              {% assign son_list_handle = childlink.title | handleize %}
+
+              <script>console.log({{ son_list_handle | json }} + "：son_list_handle")</script>
+
+              <!-- 子要素の中の孫要素のリンクが空でなければ -->
+              {% if linklists[son_list_handle].links != blank %}
+
+                <!-- 子要素にプルダウンを設定し、孫要素を表示する -->
+                <li class="has-child"><a href="{{childlink.url}}">{{childlink.title}}</a>
+                  <ul>
+
+                    <!-- 子要素の中の孫要素のリンクを取得して、sonlinkに格納 -->
+                    {% for sonlink in linklists[son_list_handle].links %}
+                      <li><a href="{{sonlink.url}}">{{sonlink.title}}</a></li>
+                      <script>console.log({{ sonlink.title | json }} + "：sonlink.title")</script>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% else %}
+                <li><a href="{{childlink.url}}">{{childlink.title}}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+            <li><a href="{{link.url}}">{{link.title}}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+<!-- 
+
+      <ul class="nav_list">
+        <li><a href="#">Top</a></li>
+        <li><a href="#">このショップについて</a></li>
+        <li class="has-child"><a href="#">商品一覧</a>子要素を持つ li にはhas-childというクラス名をつける
+          <ul>
+          <li><a href="#">Service Top</a></li>
+          <li><a href="#">Service-1</a></li>
+          <li class="has-child"><a href="#">Service-2</a>
+            <ul>
+            <li><a href="#">Service-2 Top</a></li>
+            <li><a href="#">Service-2-1</a></li>
+            <li><a href="#">Service-2-2</a></li>
+            <li><a href="#">Service-2-3</a></li>
+            <li><a href="#">Service-2-4</a></li>
+            </ul>
+         </li>
+         <li><a href="#">Service-3</a></li>
+        </ul>
+        </li>
+        <li class="has-child"><a href="#">Blog</a>
+          <ul>
+          <li><a href="#">Blog Top</a></li>
+          <li><a href="#">Blog-1</a></li>
+          <li><a href="#">Blog-2</a></li>
+          <li><a href="#">Blog-3</a></li>
+          <li><a href="#">Blog-4</a></li>
+          </ul>
+        </li>        
+      </ul> -->
+
+
+    </nav>
+  </div>
+  <div class="hamburger" id="js-hamburger">
+    <span class="hamburger_border hamburger_border_top"></span>
+    <span class="hamburger_border hamburger_border_center"></span>
+    <span class="hamburger_border hamburger_border_bottom"></span>
+  </div>
+  <a href="#" class="logo">
+    <img src="{{ 'logo.png' | asset_img_url:'3000x' }}" alt="">
+  </a>
+  <ul class="icon-wrap">
+    <li><a href="/cart" id="openbtn" class="openbtn"><i class="fas fa-shopping-cart"></i></a></li>
+    <span>1</span>
+  </ul>
+  <div class="black_bg" id="js-black-bg"></div>
+  
+  
+  <!--カートのサイドバー-->
+ 
+  <!--カートのサイドバーここまで-->
+</header>
