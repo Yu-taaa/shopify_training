@@ -1,6 +1,6 @@
 <section class="sec sec03">
   <h2>土曜限定販売の大人気商品</h2>
-  <div class="popular_product flex">
+  <form class="popular_product flex">
 
     {% assign product = all_products[section.settings.toppage_product] %}
     <img alt="" class="img" src="{{product.featured_image.src | img_url: '3000x'}}">
@@ -9,26 +9,40 @@
         <h2>
           <span>{{product.title}}</span>
         </h2>
-        <p class="price">{{product.price | money}}/p>
+        <p class="price">{{product.price | money}}</p>
       </div>
       <div class="product__detail__text">
         <p>{{product.content}}
         </p>
       </div>
-      <div class="counter">
-        <span>
-          <i class="fas fa-minus"></i>
-        </span>
-        <span>1</span>
-        <span>
-          <i class="fas fa-plus"></i>
-        </span>
+
+      <form method="post" action="/cart/add" enctype="multipart/form-data"></form>
+
+      <div class="qtydiv counter">
+        <div class="qtybox">
+          <span class="btnqty qtyminus icon icon-minus"><i class="fas fa-minus"></i></span>
+          <span><input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector quantity-input" readonly=""></span>
+          <span class="btnqty qtyplus icon icon-plus"><i class="fas fa-plus"></i></span>
+        </div>
       </div>
+
+      <input type="hidden" name="id" value={{product.variants.first.id}}>
+
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% if current_variant.inventory_quantity > 0 %}
+      
       <button class="Btn02 bgleft02" href="#">
         <span>カートに追加する</span>
       </button>
-      <a class="link__detail" href="/product.html">詳細を見る</a>
-    </div>
+      {% if current_variant.inventory_quantity < 10 %}
+      <span style="color: red;">残り在庫{{current_variant.inventory_quantity}}個です</span>
+        
+      {% endif %}
+      {% else %}
+        <div class="Btn02"><span>在庫なし</span></div>
+      {% endif %}
+    </form>
+    <a class="link__detail" href="{{product.url}}">詳細を見る</a>
 
 
     <!-- <img alt="" class="img" src="img/new/product-3.webp">
