@@ -1,0 +1,26 @@
+{{ '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+<div class="clearfix"></div>
+
+  <div class="product-template__container page-width head-room recommend sec" style="margin-top: 70px;">
+    <h2>最近見た商品</h2>
+    <div id="recently-viewed-products" class="clearfix collection-wrap flex " >
+    </div>
+  </div>
+
+  <script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
+      
+        <a href="${url}" class="product_card">
+            <img src="${Shopify.Products.resizeImage(featured_image, "large")}" />
+            <h3>${title}</h3>
+            <p class="price">¥${price/100}</p>
+            <p class="Btn bgleft"><span>詳細を見る</span></p>
+        </a>
+  
+  </script>
+
+  <script>
+      Shopify.Products.showRecentlyViewed( { howManyToShow:8 } );
+  </script>
+	</div>
