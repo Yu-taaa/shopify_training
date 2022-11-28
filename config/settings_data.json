@@ -239,7 +239,7 @@
       "section-product": {
         "type": "section-product",
         "settings": {
-          "toppage_product": "商品5"
+          "toppage_product": "product5"
         }
       },
       "section-collection-list": {
