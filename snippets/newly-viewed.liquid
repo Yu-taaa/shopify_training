@@ -12,7 +12,10 @@
   <script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
       
         <a href="${url}" class="product_card">
-            <img src="${Shopify.Products.resizeImage(featured_image, "medium")}" />
+            <img src="${Shopify.Products.resizeImage(featured_image, "large")}" />
+            <!-- 拡張子が.webpは、デフォルトのjquery.products.min.jsでは、指定されていないので、もし使う場合には
+            「resizeImage」の指定の拡張子の箇所に.webpを追記しないと、"large" でソースを取得できない（"masterならできる"） -->
+            
             <h3>${title}</h3>
             <p class="price">¥${price/100}</p>
             <p class="Btn bgleft"><span>詳細を見る</span></p>
@@ -21,6 +24,6 @@
   </script>
 
   <script>
-      Shopify.Products.showRecentlyViewed( { howManyToShow:4 } );
+      Shopify.Products.showRecentlyViewed( { howManyToShow: 4 } );
   </script>
 	</div>

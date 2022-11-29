@@ -7,9 +7,6 @@
 
         <!-- ↓linkのタイトルをハンドル整形し、変数child_list_handleに代入 -->
         {% assign child_list_handle = link.title | handleize %}
-
-        <script>console.log({{ child_list_handle | json }} + "：child_list_handle")</script>
-
         <!-- ホーム、カタログ、お問い合わせ（親要素）の中のリンク（子要素）が空でなければ -->
         {% if linklists[child_list_handle].links != blank %}
 
@@ -21,7 +18,6 @@
               {% for childlink in linklists[child_list_handle].links %}
               {% assign son_list_handle = childlink.title | handleize %}
 
-              <script>console.log({{ son_list_handle | json }} + "：son_list_handle")</script>
 
               <!-- 子要素の中の孫要素のリンクが空でなければ -->
               {% if linklists[son_list_handle].links != blank %}
@@ -33,7 +29,6 @@
                     <!-- 子要素の中の孫要素のリンクを取得して、sonlinkに格納 -->
                     {% for sonlink in linklists[son_list_handle].links %}
                       <li><a href="{{sonlink.url}}">{{sonlink.title}}</a></li>
-                      <script>console.log({{ sonlink.title | json }} + "：sonlink.title")</script>
                     {% endfor %}
                   </ul>
                 </li>
