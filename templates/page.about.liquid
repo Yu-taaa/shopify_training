@@ -104,7 +104,7 @@
 
     <div class="shops">
       <a href="#" class="shop">
-        <img src="img/new/map-1.jpeg" alt="">
+        <img src="{{ 'map-1.jpeg' | asset_img_url: '3000x' }}" alt="">
         <div class="shop__info">
           <h2>ショップ1</h2>
           <p class="tel">TEL： 020-0000-1111</p>
@@ -113,7 +113,7 @@
         </div>
       </a>
       <a href="#" class="shop">
-        <img src="img/new/map-1.jpeg" alt="">
+        <img src="{{ 'map-1.jpeg' | asset_img_url: '3000x' }}" alt="">
         <div class="shop__info">
           <h2>ショップ2</h2>
           <p class="tel">TEL： 020-0000-1111</p>
@@ -122,7 +122,7 @@
         </div>
       </a>
       <a href="#" class="shop">
-        <img src="img/new/map-1.jpeg" alt="">
+        <img src="{{ 'map-1.jpeg' | asset_img_url: '3000x' }}" alt="">
         <div class="shop__info">
           <h2>ショップ3</h2>
           <p class="tel">TEL： 020-0000-1111</p>
@@ -131,7 +131,7 @@
         </div>
       </a>
       <a href="#" class="shop">
-        <img src="img/new/map-1.jpeg" alt="">
+        <img src="{{ 'map-1.jpeg' | asset_img_url: '3000x' }}" alt="">
         <div class="shop__info">
           <h2>ショップ4</h2>
           <p class="tel">TEL： 020-0000-1111</p>
@@ -145,34 +145,7 @@
 
   <section class="recommend sec">
     <h2>おすすめ商品</h2>
-    <div class="collection-wrap flex">
-      <a href="#" class="product_card">
-        <img src="img/new/product-3.webp" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-      <a href="#" class="product_card">
-        <img src="img/new/product-3.webp" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-      <a href="#" class="product_card">
-        <img src="img/new/product-3.webp" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-      <a href="#" class="product_card">
-        <img src="img/new/product-3.webp" alt="">
-        <h3>生チョコレート"MAISON"（マスカット）</h3>
-        <p class="price">¥2,592</p>
-        <p class="Btn bgleft"><span>詳細を見る</span></p>
-      </a>
-
-    </div>
-
+    {% section 'section-collection' %}
     
 
   </section>
